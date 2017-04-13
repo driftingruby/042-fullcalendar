@@ -3,6 +3,6 @@ class Event < ApplicationRecord
   attr_accessor :date_range
 
   def all_day_event?
-    self.start == self.start.midnight && self.end == self.end.midnight ? true : false
+    self.start == self.start.midnight && self.ends == self.ends.midnight ? true : false
   end
 end
