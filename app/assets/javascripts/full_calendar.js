@@ -10,7 +10,7 @@ initialize_calendar = function() {
       },
       selectable: true,
       selectHelper: true,
-      editable: true,
+      editable: false,
       eventLimit: true,
       events: '/events.json',
 
@@ -26,7 +26,7 @@ initialize_calendar = function() {
       },
 
       eventDrop: function(event, delta, revertFunc) {
-        event_data = { 
+        event_data = {
           event: {
             id: event.id,
             start: event.start.format(),
@@ -39,7 +39,7 @@ initialize_calendar = function() {
             type: 'PATCH'
         });
       },
-      
+
       eventClick: function(event, jsEvent, view) {
         $.getScript(event.edit_url, function() {
           $('#event_date_range').val(moment(event.start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(event.end).format("MM/DD/YYYY HH:mm"))
