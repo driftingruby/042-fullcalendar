@@ -26,11 +26,11 @@ initialize_calendar = function() {
       },
 
       eventDrop: function(event, delta, revertFunc) {
-        event_data = { 
+        event_data = {
           event: {
             id: event.id,
             start: event.start.format(),
-            end: event.end.format()
+            ends: event.end.format()
           }
         };
         $.ajax({
@@ -39,7 +39,7 @@ initialize_calendar = function() {
             type: 'PATCH'
         });
       },
-      
+
       eventClick: function(event, jsEvent, view) {
         $.getScript(event.edit_url, function() {
           $('#event_date_range').val(moment(event.start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(event.end).format("MM/DD/YYYY HH:mm"))
@@ -52,4 +52,3 @@ initialize_calendar = function() {
   })
 };
 $(document).on('turbolinks:load', initialize_calendar);
-
